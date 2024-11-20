@@ -48,7 +48,7 @@ st.markdown(
 
 
 #Variables
-st.subheader("Seleccione una región:")
+st.subheader("Seleccione una región: ")
 st.markdown(
     """
     <style>
