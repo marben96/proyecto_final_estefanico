@@ -30,34 +30,48 @@ st.markdown(
 # Título principal de la aplicación
 st.title('Cálculo de ingreso económico')
 
-#Subtitulos
 st.markdown(
     """
     <style>
-    /* Cambiar estilo de los títulos (labels) */
-    .stRadio label, .stSlider label, .stCheckbox label {
-        color: #010369; /* Cambiar color de los títulos */
-        font-size: 50px !important;  
-        font-weight: bold; !important;
-        text-align: left !important; /* Opcional: alineación */
+    /* Cambiar el color y formato de los labels de los radios */
+    .stRadio label {
+        color: #010369; /* Color del texto */
+        font-size: 30px; /* Tamaño del texto */
+        font-weight: bold; /* Negrita */
+        font-family: 'Arial', sans-serif; /* Fuente */
+        text-align: left; /* Alineación */
     }
-    </style>
-    """,
-    unsafe_allow_html=True
-)
+
+    /* Cambiar el color y formato de los labels de los sliders */
+    .stSlider label {
+        color: #010369; /* Color del texto */
+        font-size: 30px; /* Tamaño del texto */
+        font-weight: bold; /* Negrita */
+        font-family: 'Helvetica', sans-serif; /* Fuente */
+        text-align: center; /* Alineación */
+    }
+
+    /* Cambiar el color de fondo y texto de los labels */
+    .stCheckbox label {
+        color: #008080; /* Color del texto */
+        font-size: 30px; /* Tamaño del texto */
+        font-weight: normal; /* Negrita */
+        text-align: center; /* Alineación */
+    }
+
+
+
+
+
+
+
+
+
 
 
 #Variables
-st.subheader("Seleccione una región: ")
+st.subheader("Región: ")
 st.markdown(
-    """
-    <style>
-    /* Cambiar el color de fondo y el color del texto */
-    .stRadio label {
-        color: #FF5733; /* Color de los textos de las opciones */
-        font-size: 18px; /* Tamaño del texto */
-        font-weight: bold; /* Negrita */
-    }
 
     /* Cambiar el color de los botones seleccionados */
     .stRadio > div > div > div > label {
@@ -75,7 +89,7 @@ st.markdown(
     unsafe_allow_html=True
 )
 region =  st.radio(
-    "", 
+    "Seleccione una región", 
     ['Región de Ñuble',
  'Región del Biobio',
  'Región Metropolitana',
@@ -94,10 +108,10 @@ region =  st.radio(
  'Región de Aysén del Gral Carlos Ibañez del Campo'],
     index=None)
 
-st.subheader("Nivel socioeconómico:")
+st.subheader("Economía:")
 
 nivel_socioeconomico = st.radio(
-    "",
+    "Seleccione su nivel socioeconómico",
     ['Bajo-medio', 'Bajo-medio-alto', 'Medio', 'Bajo', 'Alto', 'Medio-alto', 'Bajo-alto'],
      index= None)
 
@@ -128,30 +142,30 @@ st.markdown(
 
 st.subheader("¿Cuántas personas viven con usted?:")
 
-personas_por_hogar = st.slider('', min_value=1, max_value=13, step=1)
+personas_por_hogar = st.slider('Seleccione un número', min_value=1, max_value=13, step=1)
 
 st.subheader("Edad:")
 
-edad = st.slider('', min_value=15, max_value=100, step=1)
+edad = st.slider('Seleccione su edad', min_value=15, max_value=100, step=1)
 
 st.subheader("Estado civil:")
 
 estado_civil = st.radio(
-    "",
+    "Seleccione su estado civil",
     ['Casado(a)','Separado(a)','Conviviente sin acuerdo de unión civil', 'Soltero(a)', 'Viudo(a)', 'Divorciado(a)','Anulado(a)', 'Conviviente civil'],
 index= None)
 
 st.subheader("Nivel educacional:")
 
 nivel_educacional = st.radio(
-    "",
+    "Seleccione su nivel educacional",
     ['Básica', 'Técnica nivel superior', 'Media científico humanista', 'Técnica comercial industrial normalista', 'Media técnica profesional', 'Profesional', 'Diferencial', 'Ninguno', 'Magister', 'Doctorado'],
      index= None)
 
 st.subheader("Previsión:")
 
 prevision =  st.radio(
-    "",
+    "Seleccione su previsión de salud",
     ['FONASA','Isapre','FF.AA. y del Orden','Ninguno (particular)','Otro sistema'],
     index = None
 )
