@@ -89,7 +89,7 @@ st.markdown(
     unsafe_allow_html=True
 )
 region =  st.radio(
-    "Seleccione una región", 
+    "Seleccione una región ", 
     ['Región de Ñuble',
  'Región del Biobio',
  'Región Metropolitana',
