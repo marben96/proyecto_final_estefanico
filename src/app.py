@@ -126,10 +126,6 @@ st.markdown(
     unsafe_allow_html=True
 )
 
-
-
-
-
 st.subheader("¿Cuántas personas viven con usted?:")
 
 personas_por_hogar = st.slider('', min_value=1, max_value=13, step=1)
