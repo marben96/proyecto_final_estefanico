@@ -28,7 +28,7 @@ st.markdown(
 )
 
 # Título principal de la aplicación
-st.title('Cálculo de ingreso económico')
+st.title('Cálculo de ingreso económico ')
 
 st.markdown(
     """
