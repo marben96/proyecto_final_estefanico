@@ -1,14 +1,17 @@
 from pickle import load
 import streamlit as st
-from PIL import Image
+
 
 model = load(open("/workspaces/proyecto_final_estefanico/models/random_forest.sav", "rb"))
+
+import streamlit as st
+
 
 st.markdown(
     """
     <style>
     .stApp {
-        background-color: #f2f2f2; /* Color de fondo */
+        background-color: #f1f1f1; /* Color de fondo */
         font-family: "Roboto", serif;
     }
     </style>
@@ -33,14 +36,12 @@ st.markdown(
     unsafe_allow_html=True
 )
 
-def main(imagen):
-    
-    img = Image()
-    foto = img.imagen
-
-main('tiplogo')
+# Carga el logo desde un archivo local
+st.logo("src/tiplogo.png")
 
 # Título principal de la aplicación
+with st.container():
+    st.image("src/img.png",width=90)
 st.title('Perfila el ingreso')
 
 st.markdown(
@@ -48,7 +49,7 @@ st.markdown(
     <style>
     /* Cambiar el color y formato de los labels de los radios */
     .stRadio label {
-        color: #231f20; /* Color del texto */
+        color: #231f20; /* Color del texto negro */
         font-size: 30px; /* Tamaño del texto */
         font-weight: bold; /* Negrita */
         font-family: "Roboto", serif; /* Fuente */
@@ -57,7 +58,7 @@ st.markdown(
 
     /* Cambiar el color y formato de los labels de los sliders */
     .stSlider label {
-        color: #231f20; /* Color del texto */
+        color: #231f20; /* Color del texto negro */
         font-size: 30px; /* Tamaño del texto */
         font-weight: bold; /* Negrita */
         font-family: "Roboto", serif; /* Fuente */
@@ -75,9 +76,9 @@ st.markdown(
     }
 
     /* Cambiar el color de los botones seleccionados */
-    .stRadio > div > div > div > label {
+    .st-dt{
         background-color: #f2ca4b; /* Color de fondo de las opciones seleccionadas */
-        border-radius: 5px;
+        border-radius: 10px;
     }
 
     /* Cambiar el color del texto al pasar el mouse por encima */
@@ -96,8 +97,7 @@ st.markdown(
     /* Cambiar el color de fondo y el color del texto en el slider */
     .stSlider div {
         font-family: "Roboto", serif;
-        background-color: ##d9dadb; /* Color de fondo del slider */
-        color: #010369; /* Color del texto */
+        color: #231f20; /* Color del texto */
         font-size: 16px; /* Tamaño del texto */
     }
 
