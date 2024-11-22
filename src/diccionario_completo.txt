@@ -1,0 +1,88 @@
+Pestaña: region
+  1: Región de Tarapacá
+  2: Región de Antofagasta
+  3: Región de Atacama
+  4: Región de Coquimbo
+  5: Región de Valparaíso
+  6: Región del Libertador Gral. Bernardo O'Higgins
+  7: Región del Maule
+  8: Región del Biobío
+  9: Región de La Araucanía
+  10: Región de Los Lagos
+  11: Región de Aysén del Gral. Carlos Ibáñez del Campo
+  12: Región de Magallanes y de la Antártica Chilena
+  13: Región Metropolitana de Santiago
+  14: Región de Los Ríos
+  15: Región de Arica y Parinacota
+  16: Región de Ñuble
+Pestaña: activ
+  1: Ocupados
+  2: Desocupados
+  3: Inactivos
+Pestaña: n_soceco
+  1: Bajo
+  2: Medio
+  3: Alto
+  4: Bajo-medio
+  5: Bajo-alto
+  6: Bajo-medio-alto
+  7: Medio-alto
+Pestaña: area
+  1: Urbano
+  2: Rural
+Pestaña: sexo
+  1: Hombre
+  2: Mujer
+Pestaña: ecivil
+  1: Casado(a)
+  2: Conviviente sin acuerdo de unión civil
+  3: Conviviente civil 
+  4: Anulado(a)
+  5: Separado(a)
+  6: Divorciado(a)
+  7: Viudo(a)
+  8: Soltero(a)
+Pestaña: analf
+  1: Lee y escribe
+  2: Solo lee
+  3: Solo escribe
+  4: No lee ni escribe
+Pestaña: educ
+  -88: np.nan
+  0: Sin educación formal
+  1: Básica incompleta
+  2: Básica completa
+  3: Media humanista incompleta
+  4: Media técnica profesional incompleta
+  5: Media humanista completa
+  6: Media técnica profesional completa
+  7: Técnico nivel superior incompleta
+  8: Técnico nivel superior completo
+  9: Profesional incompleto
+  10: Posgrado incompleto
+  11: Profesional completo
+  12: Posgrado completo
+Pestaña: afil_sisprev
+  -88: np.nan
+  1: AFP 
+  2: IPS ex INP
+  3: CAPREDENA
+  4: DIPRECA
+  5: Otro
+  6: No cotiza
+Pestaña: sprev_salud
+  -88: np.nan
+  1: FONASA
+  2: Isapre
+  3: FF.AA. y del Orden
+  4: Ninguno (particular)
+  5: Otro sistema
+Pestaña: nacionalidad
+  1: Chile 
+  2: Binacionalidad
+  3: Extranjero
+Pestaña: ten_viv
+  1: Propia
+  2: Arrendada
+  3: Cedida
+  4: Poseedor/ocupante irregular, usufructo u otro

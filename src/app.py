@@ -1,6 +1,8 @@
 from pickle import load
 import streamlit as st
 
+model = load(open("/workspaces/proyecto_final_estefanico/models/random_forest.sav", "rb"))
+
 st.markdown(
     """
     <style>
@@ -11,7 +13,6 @@ st.markdown(
     """,
     unsafe_allow_html=True
 )
-model = load(open("/workspaces/proyecto_final_estefanico/models/random_forest.sav", "rb"))
 
 #Título
 st.markdown(
@@ -28,7 +29,7 @@ st.markdown(
 )
 
 # Título principal de la aplicación
-st.title('Cálculo de ingreso económico ')
+st.title('TIP: Perfila al usuario por sus ingresos económicos')
 
 st.markdown(
     """
@@ -59,16 +60,6 @@ st.markdown(
         text-align: center; /* Alineación */
     }
 
-
-
-
-
-
-
-
-
-
-
 #Variables
 st.subheader("Región: ")
 st.markdown(
@@ -88,32 +79,6 @@ st.markdown(
     """,
     unsafe_allow_html=True
 )
-region =  st.radio(
-    "Seleccione una región ", 
-    ['Región de Ñuble',
- 'Región del Biobio',
- 'Región Metropolitana',
- 'Región de Tarapacá',
- 'Región de Los Rios',
- 'Región del Libertador Gral Bernardo Ohiggins',
- 'Región de La Araucania',
- 'Región de Valparaiso',
- 'Región de Los Lagos',
- 'Región de Coquimbo',
- 'Región del Maule',
- 'Región de Arica y Parinacota',
- 'Región de Antofagasta',
- 'Región de Atacama',
- 'Región de Magallanes y de la Antartica Chilena',
- 'Región de Aysén del Gral Carlos Ibañez del Campo'],
-    index=None)
-
-st.subheader("Economía:")
-
-nivel_socioeconomico = st.radio(
-    "Seleccione su nivel socioeconómico",
-    ['Bajo-medio', 'Bajo-medio-alto', 'Medio', 'Bajo', 'Alto', 'Medio-alto', 'Bajo-alto'],
-     index= None)
 
 st.markdown(
     """
@@ -140,89 +105,88 @@ st.markdown(
     unsafe_allow_html=True
 )
 
-st.subheader("¿Cuántas personas viven con usted?:")
+st.subheader("Pertenencia a zona urbana o rural")
+area =  st.radio(
+    "Seleccione el área al cual pertenece",
+    ['Urbano','Rural'],
+    index = None)
 
-personas_por_hogar = st.slider('Seleccione un número', min_value=1, max_value=13, step=1)
+st.subheader("Nivel socioeconómico")
+nsoceco = st.selectbox(
+    "Seleccione su nivel socioeconómico",
+    ['Bajo', 'Bajo-medio', 'Bajo-medio-alto', 'Bajo-alto', 'Medio','Medio-alto','Alto'],
+    index = None)
 
-st.subheader("Edad:")
-
-edad = st.slider('Seleccione su edad', min_value=15, max_value=100, step=1)
-
-st.subheader("Estado civil:")
-
-estado_civil = st.radio(
-    "Seleccione su estado civil",
-    ['Casado(a)','Separado(a)','Conviviente sin acuerdo de unión civil', 'Soltero(a)', 'Viudo(a)', 'Divorciado(a)','Anulado(a)', 'Conviviente civil'],
-index= None)
+st.subheader("¿Cuántas personas viven en el hogar?")
+personas_x_hogar = st.slider('Seleccione un número', min_value=1, max_value=11, step=1)
 
 st.subheader("Nivel educacional:")
-
-nivel_educacional = st.radio(
-    "Seleccione su nivel educacional",
-    ['Básica', 'Técnica nivel superior', 'Media científico humanista', 'Técnica comercial industrial normalista', 'Media técnica profesional', 'Profesional', 'Diferencial', 'Ninguno', 'Magister', 'Doctorado'],
+educ = st.selectbox(
+    "Seleccione nivel educacional",
+    ['Sin educación formal', 'Básica incompleta', 'Básica completa', 'Media humanista incompleta','Media humanista completa', 'Media técnica profesional incompleta',  'Media técnica profesional completa', 'Técnico nivel superior incompleta', 'Técnico nivel superior completo', 'Profesional incompleto', 'Profesional completo', 'Posgrado incompleto', 'Posgrado completo'],
      index= None)
 
-st.subheader("Previsión:")
-
-prevision =  st.radio(
-    "Seleccione su previsión de salud",
+st.subheader("Afiliación a sistema previsional de salud")
+sprev_salud =  st.radio(
+    "Seleccione sistema previsional de salud",
     ['FONASA','Isapre','FF.AA. y del Orden','Ninguno (particular)','Otro sistema'],
     index = None
 )
 
+st.subheader("Condición laboral")
+activ = st.radio(
+    "Seleccione condición laboral actual",
+    ['Ocupado(a)', 'Desocupado(a) (busca empleo)', 'Inactivo(a) (no busca empleo)'],
+    index = None
+)
+
+st.subheader("Propiedad de la vivienda actual")
+ten_viv = st.radio(
+  "Seleccione propiedad de la vivienda",
+  ['Propia', 'Arrendada', 'Cedida', 'Poseedor/ocupante irregular, usufructo u otro'],
+  index = None
+)
+
 #Diccionarios
-region_dic = {'Región de ñuble': 0,
- 'Región del Biobio' : 1,
- 'Región Metropolitana' : 2,
- 'Región de Tarapacá' : 3,
- 'Región de Los Rios': 4,
- 'Región del Libertador Gral Bernardo Ohiggins': 5,
- 'Región de La Araucania': 6,
- 'Región de Valparaiso': 7,
- 'Región de Los Lagos': 8,
- 'Región de Coquimbo':9,
- 'Región del Maule':10,
- 'Región de Arica y Parinacota': 11,
- 'Región de Antofagasta': 12,
- 'Región de Atacama':13,
- 'Región de Magallanes y de la Antartica Chilena': 14,
- 'Región de Aysén del Gral Carlos Ibañez del Campo': 15}
 
-nivel_socioeconomico_dic = {
-'Bajo-medio': 0,
- 'Bajo-medio-alto': 1,
+area_dic = {'Urbano': 1, 'Rural': 2}
+
+nsoceco_dic = {'Bajo': 1,
  'Medio': 2,
- 'Bajo': 3,
- 'Alto': 4,
- 'Medio-alto': 4,
- 'Bajo-alto': 6}
+ 'Alto': 3,
+ 'Bajo-medio': 4,
+ 'Bajo-alto': 5,
+ 'Bajo-medio-alto': 6,
+ 'Medio-alto': 7}
 
-estado_civil_dic = {'Casado(a)': 0,
- 'Separado(a)': 1,
- 'Conviviente sin acuerdo de unión civil': 2,
- 'Soltero(a)': 3,
- 'Viudo(a)': 4,
- 'Divorciado(a)': 5,
- 'Anulado(a)': 6,
-'Conviviente civil': 7}
+educ_dic = {'Sin educación formal': 0,
+ 'Básica incompleta': 1,
+ 'Básica completa': 2,
+ 'Media humanista incompleta': 3,
+ 'Media técnica profesional incompleta': 4,
+ 'Media humanista completa': 5,
+ 'Media técnica profesional completa': 6,
+ 'Técnico nivel superior incompleta': 7,
+ 'Técnico nivel superior completo': 8,
+ 'Profesional incompleto': 9,
+ 'Posgrado incompleto': 10,
+ 'Profesional completo': 11,
+ 'Posgrado completo': 12}
 
-nivel_educacional_dic= {'Básica': 0,
-'Técnica nivel superior': 1,
-'Media científico humanista': 2,
-'Técnica comercial industrial normalista': 3,
-'Media técnica profesional': 4,
-'Profesional': 5,
-'Diferencial': 6,
-'Ninguno': 7,
-'Magister': 8,
-'Doctorado': 9}
+sprev_salud_dic= {'FONASA': 1,
+ 'Isapre': 2,
+ 'FF.AA. y del Orden': 3,
+ 'Ninguno (particular)': 4,
+ 'Otro sistema': 5}
 
-prevision_dic= {
-'FONASA': 0,
- 'Isapre': 1,
- 'FF.AA. y del Orden': 2,
- 'Ninguno (particular)': 3,
-'Otro sistema': 4}
+ten_viv_dic={'Propia': 1,
+ 'Arrendada': 2,
+ 'Cedida': 3,
+ 'Poseedor/ocupante irregular, usufructo u otro': 4}
+
+activ_dic = {'Ocupado(a)': 1,
+ 'Desocupado(a) (busca empleo)': 2,
+ 'Inactivo(a) (no busca empleo)': 3}
 
 #Botón final
 st.markdown(
@@ -249,8 +213,8 @@ st.markdown(
 
 if st.button('Haz clic aquí'):
     prediccion = model.predict([
-        [region_dic[region], nivel_socioeconomico_dic[nivel_socioeconomico], personas_por_hogar, edad,
-         prevision_dic[prevision], estado_civil_dic[estado_civil], nivel_educacional_dic[nivel_educacional]]
+        [area_dic[area], nsoceco_dic[nsoceco], personas_x_hogar,  educ_dic[educ],
+        sprev_salud_dic[sprev_salud], activ_dic[activ], ten_viv_dic[ten_viv]]
     ])
-    st.write('Salario estimado:', prediccion)
+    st.write('Ingreso estimado:', prediccion)
 
