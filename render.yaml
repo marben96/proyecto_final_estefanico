@@ -1,0 +1,13 @@
+name: my-streamlit-app
+
+type: web-service
+
+env:
+  PYTHON_VERSION: 3.10
+
+build:
+  commands:
+    - pip install -r requirements.txt
+
+web:
+  command: streamlit run app.py 
